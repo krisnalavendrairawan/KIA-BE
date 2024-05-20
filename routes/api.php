@@ -9,6 +9,7 @@ use App\Http\Controllers\penimbanganController;
 use App\Http\Controllers\userController;
 
 
+
 Route::post('/register', [AuthController::class, 'userRegister']);
 Route::post('/login', [AuthController::class, 'userLogin']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -27,6 +28,11 @@ Route::delete('/deleteAnak/{nik}', [anakController::class, 'deleteAnak']);
 //penimbangan
 Route::get('/getPenimbangan', [penimbanganController::class, 'getPenimbangan']);
 Route::post('/createPenimbangan', [penimbanganController::class, 'createPenimbangan']);
+Route::get('/getPenimbanganById/{id}', [penimbanganController::class, 'getPenimbanganById']);
+//get penimbangan by nik
+Route::get('/getPenimbanganByNik/{nik_anak}', [penimbanganController::class, 'getPenimbanganByNik']);
+//update penimbangan
+Route::put('/updatePenimbangan/{id}', [penimbanganController::class, 'updatePenimbangan']);
 
 //get kader
 Route::get('/getKader', [userController::class, 'showKader']);

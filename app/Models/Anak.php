@@ -11,7 +11,7 @@ class Anak extends Model
 
     protected $table = 'anak';
     protected $primaryKey = 'nik';
-    protected $fillable = ['nik', 'no_kk', 'nama_anak', 'nama_ibu', 'nama_ayah', 'anak_ke', 'tanggal_lahir', 'jenis_kelamin', 'bb_lahir', 'pb_lahir', 'no_hp_ortu', 'alamat'];
+    protected $fillable = ['nik', 'no_kk', 'nama_anak', 'nama_ibu', 'nama_ayah', 'anak_ke', 'tanggal_lahir', 'jenis_kelamin', 'bb_lahir', 'pb_lahir', 'no_hp_ortu', 'alamat', 'umur'];
 
     public function imunisasi()
     {

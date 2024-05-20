@@ -10,7 +10,7 @@ class Penimbangan extends Model
     use HasFactory;
     protected $table = 'penimbangan';
     protected $primaryKey = 'id_penimbangan';
-    protected $fillable = ['tgl_penimbangan', 'nik_anak', 'berat_badan', 'tinggi_badan', 'status_gizi', 'keterangan', 'saran', 'usia'];
+    protected $fillable = ['tgl_penimbangan', 'nik_anak', 'berat_badan', 'tinggi_badan', 'status_gizi', 'keterangan', 'saran', 'usia', 'bulan_ke', 'id_kader'];
 
     public function anak()
     {

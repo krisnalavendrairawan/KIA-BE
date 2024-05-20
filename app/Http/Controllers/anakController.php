@@ -32,6 +32,7 @@ class anakController extends Controller
         $anak->pb_lahir = $request->pb_lahir;
         $anak->no_hp_ortu = $request->no_hp_ortu;
         $anak->alamat = $request->alamat;
+        $anak->umur = $request->umur;
         $anak->save();
 
         return response()->json([
@@ -65,6 +66,7 @@ class anakController extends Controller
     $anak->pb_lahir = $request->pb_lahir ?? $anak->pb_lahir;
     $anak->no_hp_ortu = $request->no_hp_ortu ?? $anak->no_hp_ortu;
     $anak->alamat = $request->alamat ?? $anak->alamat;
+    $anak->umur = $request->umur ?? $anak->umur;
 
     // Save the changes
     $anak->save();
@@ -78,7 +80,7 @@ class anakController extends Controller
 //getData by nik
 public function getAnakByNik($nik)
 {
-    $anak = Anak::where('nik', $nik)->with('penimbangan', 'imunisasi')->first();
+    $anak = Anak::where('nik_anak', $nik)->with('penimbangan', 'imunisasi')->first();
 
     if (!$anak) {
         return response()->json(['message' => 'Anak not found'], 404);
