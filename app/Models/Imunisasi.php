@@ -11,15 +11,15 @@ class Imunisasi extends Model
 
     protected $table = 'imunisasi';
     protected $primaryKey = 'id_imunisasi';
-    protected $fillable = ['tgl_imunisasi', 'nik_anak', 'jenis_imunisasi'];
+    protected $fillable = ['tgl_imunisasi', 'nik_anak', 'jenis_imunisasi', 'usia', 'id_kader'];
 
     public function anak()
     {
         return $this->belongsTo(Anak::class, 'nik_anak', 'nik');
     }
 
-    public function kader()
+    public function user()
     {
-        return $this->belongsTo(Kader::class, 'id_kader', 'id');
+        return $this->belongsTo(User::class, 'id_kader', 'id');
     }
 }

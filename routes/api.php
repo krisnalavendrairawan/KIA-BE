@@ -7,6 +7,7 @@ use App\Http\Controllers\anakController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\penimbanganController;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\imunisasiController;
 
 
 
@@ -24,15 +25,20 @@ Route::put('/updateAnak/{nik}', [anakController::class, 'updateAnak']);
 Route::get('/getAnak/{nik}', [anakController::class, 'getAnakByNik']);
 //delete data anak
 Route::delete('/deleteAnak/{nik}', [anakController::class, 'deleteAnak']);
+//update umur anak menggunakan patch
+Route::patch('/updateUmur/{nik}', [anakController::class, 'updateUmur']);
 
 //penimbangan
 Route::get('/getPenimbangan', [penimbanganController::class, 'getPenimbangan']);
 Route::post('/createPenimbangan', [penimbanganController::class, 'createPenimbangan']);
 Route::get('/getPenimbanganById/{id}', [penimbanganController::class, 'getPenimbanganById']);
-//get penimbangan by nik
 Route::get('/getPenimbanganByNik/{nik_anak}', [penimbanganController::class, 'getPenimbanganByNik']);
-//update penimbangan
 Route::put('/updatePenimbangan/{id}', [penimbanganController::class, 'updatePenimbangan']);
+
+
+//imunisasi
+Route::get('/getImunisasi', [imunisasiController::class, 'getImunisasi']);
+Route::post('/createImunisasi', [imunisasiController::class, 'createImunisasi']);
 
 //get kader
 Route::get('/getKader', [userController::class, 'showKader']);

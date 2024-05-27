@@ -108,6 +108,27 @@ public function deleteAnak($nik)
 
 }
 
+//update umur mengguanakan patch request
+public function updateUmur(Request $request, $nik)
+{
+    $anak = Anak::where('nik', $nik)->first();
+
+    if (!$anak) {
+        return response()->json(['message' => 'Anak not found'], 404);
+    }
+
+    $anak->umur = $request->umur ?? $anak->umur;
+
+    $anak->save();
+
+    return response()->json([
+        'message' => 'Anak updated successfully',
+        'anak' => $anak
+    ]);
+}
+
+
+
 
 
 }

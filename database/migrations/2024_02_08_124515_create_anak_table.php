@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('anak_ke', 2)->comment('Anak ke-berapa dari pasangan tersebut');
             $table->date('tanggal_lahir');
             $table->string('jenis_kelamin');
-            $table->integer('bb_lahir')->comment('Berat Badan Lahir');
+            $table->decimal('bb_lahir', 8, 2)->comment('Berat Badan Lahir');
             $table->integer('pb_lahir')->comment('Panjang Badan Lahir');
             $table->string('no_hp_ortu', 13);
             $table->string('alamat');
