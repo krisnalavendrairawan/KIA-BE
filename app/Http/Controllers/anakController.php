@@ -80,7 +80,7 @@ class anakController extends Controller
 //getData by nik
 public function getAnakByNik($nik)
 {
-    $anak = Anak::where('nik_anak', $nik)->with('penimbangan', 'imunisasi')->first();
+    $anak = Anak::where('nik', $nik)->with('penimbangan', 'imunisasi')->first();
 
     if (!$anak) {
         return response()->json(['message' => 'Anak not found'], 404);

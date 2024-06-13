@@ -17,15 +17,6 @@ class penimbanganController extends Controller
         ]);
     }
 
-    //get penimbangan berdasarkan nik
-    // public function getPenimbanganByNik($nik)
-    // {
-    //     $penimbangan = Penimbangan::where('nik_anak', $nik)->get();
-    //     return response()->json([
-    //         'penimbangan' => $penimbangan
-    //     ]);
-    // }
-
     //buat agar bisa menampilkan nama anak berdasarkan nik
     public function getPenimbanganByNik($nik_anak)
     {
@@ -102,4 +93,22 @@ class penimbanganController extends Controller
             'penimbangan' => $penimbangan
         ]);
     }
+
+
+    //delete data penimbangan
+    public function deletePenimbangan($id)
+    {
+        $penimbangan = Penimbangan::find($id);
+
+        if (!$penimbangan) {
+            return response()->json(['message' => 'Data penimbangan tidak ditemukan'], 404);
+        }
+
+        $penimbangan->delete();
+
+        return response()->json([
+            'message' => 'Data penimbangan berhasil dihapus'
+        ]);
+    }
 }
+

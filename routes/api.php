@@ -17,6 +17,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::middleware('auth:sanctum')->get('/getAllUser', [userController::class, 'getAllUser']);
+
 Route::get('/show', [kaderController::class, 'showKader']);
 Route::post('/createAnak', [anakController::class, 'createAnak']);
 Route::get('/getAnak', [anakController::class, 'getAnak']);
@@ -34,11 +36,18 @@ Route::post('/createPenimbangan', [penimbanganController::class, 'createPenimban
 Route::get('/getPenimbanganById/{id}', [penimbanganController::class, 'getPenimbanganById']);
 Route::get('/getPenimbanganByNik/{nik_anak}', [penimbanganController::class, 'getPenimbanganByNik']);
 Route::put('/updatePenimbangan/{id}', [penimbanganController::class, 'updatePenimbangan']);
+Route::delete('/deletePenimbangan/{id}', [penimbanganController::class, 'deletePenimbangan']);
 
 
 //imunisasi
 Route::get('/getImunisasi', [imunisasiController::class, 'getImunisasi']);
 Route::post('/createImunisasi', [imunisasiController::class, 'createImunisasi']);
+Route::get('/getImunisasiById/{id}', [imunisasiController::class, 'getImunisasiById']);
+Route::put('/updateImunisasi/{id}', [imunisasiController::class, 'updateImunisasi']);
+Route::delete('/deleteImunisasi/{id}', [imunisasiController::class, 'deleteImunisasi']);
+
+//get all user
+Route::get('/getAllUser', [userController::class, 'getAllUser']);
 
 //get kader
 Route::get('/getKader', [userController::class, 'showKader']);

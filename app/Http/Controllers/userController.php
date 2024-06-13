@@ -25,18 +25,29 @@ class userController extends Controller
     }
 
     public function showKaderByUsername($username)
-{
-    $kader = User::where('role', 'kader')->where('username', $username)->first();
+    {
+        $kader = User::where('role', 'kader')->where('username', $username)->first();
 
-    if (!$kader) {
+        if (!$kader) {
+            return response()->json([
+                'message' => 'Kader not found.'
+            ], 404);
+        }
+
         return response()->json([
-            'message' => 'Kader not found.'
-        ], 404);
+            'kader' => $kader
+        ]);
     }
 
-    return response()->json([
-        'kader' => $kader
-    ]);
-}
+    //getAllUser
+    public function getAllUser()
+    {
+        $users = User::select('id', 'nama', 'nik', 'role', 'username', 'password', 'email', 'alamat', 'jenis_kelamin', 'rt', 'rw')->get();
+    
+        return response()->json([
+            'users' => $users
+        ]);
+
+    }
     
 }
