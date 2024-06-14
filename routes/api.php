@@ -54,3 +54,8 @@ Route::get('/getKader', [userController::class, 'showKader']);
 
 //showKader by username
 Route::get('/getKader/{username}', [userController::class, 'showKaderByUsername']);
+
+//cek username
+Route::get('/cekUsername/{username}', [userController::class, 'cekUsername']);
+//cek email
+Route::get('/cekEmail/{email}', [userController::class, 'cekEmail']);

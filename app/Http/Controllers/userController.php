@@ -49,5 +49,37 @@ class userController extends Controller
         ]);
 
     }
+
+    //cek username apakah ada yang sama
+    public function cekUsername($username)
+    {
+        $user = User::where('username', $username)->first();
+
+        if ($user) {
+            return response()->json([
+                'message' => 'Username sudah digunakan'
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Username belum digunakan'
+        ]);
+    }
+
+    //cek email apakah ada yang sama
+    public function cekEmail($email)
+    {
+        $user = User::where('email', $email)->first();
+
+        if ($user) {
+            return response()->json([
+                'message' => 'Email sudah digunakan'
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Email belum digunakan'
+        ]);
+    }
     
 }
