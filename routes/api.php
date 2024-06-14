@@ -54,8 +54,18 @@ Route::get('/getKader', [userController::class, 'showKader']);
 
 //showKader by username
 Route::get('/getKader/{username}', [userController::class, 'showKaderByUsername']);
+Route::get('/getUser/{id}', [userController::class, 'getUserById']);
 
-//cek username
+//update user
+Route::put('/updateUser/{id}', [userController::class, 'updateUser']);
+
 Route::get('/cekUsername/{username}', [userController::class, 'cekUsername']);
-//cek email
 Route::get('/cekEmail/{email}', [userController::class, 'cekEmail']);
+//cek username edit
+Route::get('/cekUsernameEdit/{username}/{id}', [userController::class, 'cekUsernameEdit']);
+//cek email edit
+Route::get('/cekEmailEdit/{email}/{id}', [userController::class, 'cekEmailEdit']);
+
+//delete user
+
+Route::delete('/deleteUser/{id}', [userController::class, 'deleteUser']);
