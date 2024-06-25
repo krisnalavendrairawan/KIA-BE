@@ -13,14 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bidan', function (Blueprint $table) {
-            $table->id();
-            $table->string('username')->unique();
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('nama', 50);
-            $table->string('alamat');
-            $table->string('telepon');
+        Schema::create('jadwal', function (Blueprint $table) {
+            $table->bigIncrements('id_jadwal');
+            $table->date('tgl_kegiatan');
+            $table->string('tempat');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bidan');
+        Schema::dropIfExists('jadwal');
     }
 };

@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Imunisasi::class, 'id_kader', 'id');
     }
+
+    public function riwayatPenyakit()
+    {
+        return $this->hasMany(RiwayatPenyakit::class, 'id_kader', 'id');
+    }
 }

@@ -22,4 +22,9 @@ class Anak extends Model
     {
         return $this->hasMany(Penimbangan::class, 'nik_anak', 'nik');
     }
+
+    public function riwayatPenyakit()
+    {
+        return $this->hasMany(RiwayatPenyakit::class, 'nik_anak', 'nik');
+    }
 }
