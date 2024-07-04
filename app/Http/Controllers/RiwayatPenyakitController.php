@@ -59,11 +59,11 @@ class RiwayatPenyakitController extends Controller
     }
 
     //get riwayat penyakit by id penyakit
-    public function getRiwayatPenyakitById($id_penyakit)
+    public function getRiwayatPenyakitById($id)
     {
         try {
             // Lakukan pencarian berdasarkan id_penyakit
-            $riwayatPenyakit = RiwayatPenyakit::where('id_penyakit', $id_penyakit)->get();
+            $riwayatPenyakit = RiwayatPenyakit::where('id_penyakit', $id)->get();
             
             // Pastikan data ditemukan sebelum merespons
             if ($riwayatPenyakit->isEmpty()) {

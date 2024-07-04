@@ -25,8 +25,11 @@ return new class extends Migration
             $table->decimal('bb_lahir', 8, 2)->comment('Berat Badan Lahir');
             $table->integer('pb_lahir')->comment('Panjang Badan Lahir');
             $table->string('no_hp_ortu', 13);
-            $table->string('alamat');
             $table->integer('umur');
+            $table->string('rt',3);
+            $table->string('rw',3);
+            $table->string('alamat');
+
             $table->timestamps();
         });
     }

@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('jenis_penyakit', 16);
             $table->string('nik_anak', 16);
             $table->foreign('nik_anak')->references('nik')->on('anak')->onDelete('cascade');
-            $table->integer('rujukan');
-            $table->integer('saran');
+            $table->string('rujukan');
+            $table->string('saran');
             $table->bigInteger('id_kader');
             $table->foreign('id_kader')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

@@ -8,7 +8,7 @@ use App\Models\User;
 class userController extends Controller
 
 {
-    public function showKader ()
+    public function showKader()
     {
         $kader = User::where('role', 'kader')->get();
         return response()->json([
@@ -16,7 +16,7 @@ class userController extends Controller
         ]);
     }
 
-    public function showBidan ()
+    public function showBidan()
     {
         $bidan = User::where('role', 'bidan')->get();
         return response()->json([
@@ -43,44 +43,12 @@ class userController extends Controller
     public function getAllUser()
     {
         $users = User::select('id', 'nama', 'nik', 'role', 'username', 'password', 'email', 'alamat', 'jenis_kelamin', 'rt', 'rw')->get();
-    
+
         return response()->json([
             'users' => $users
         ]);
-
     }
 
-    //cek username apakah ada yang sama
-    public function cekUsername($username)
-    {
-        $user = User::where('username', $username)->first();
-
-        if ($user) {
-            return response()->json([
-                'message' => 'Username sudah digunakan'
-            ]);
-        }
-
-        return response()->json([
-            'message' => 'Username belum digunakan'
-        ]);
-    }
-
-    //cek email apakah ada yang sama
-    public function cekEmail($email)
-    {
-        $user = User::where('email', $email)->first();
-
-        if ($user) {
-            return response()->json([
-                'message' => 'Email sudah digunakan'
-            ]);
-        }
-
-        return response()->json([
-            'message' => 'Email belum digunakan'
-        ]);
-    }
 
     //get user by id
     public function getUserById($id)
@@ -98,37 +66,8 @@ class userController extends Controller
         ]);
     }
 
-    public function cekEmailEdit($email, $id)
-    {
-        $user = User::where('email', $email)->where('id', '!=', $id)->first();
-
-        if ($user) {
-            return response()->json([
-                'message' => 'Email sudah digunakan'
-            ]);
-        }
-
-        return response()->json([
-            'message' => 'Email belum digunakan'
-        ]);
-    }
-
-    public function cekUsernameEdit($username, $id)
-    {
-        $user = User::where('username', $username)->where('id', '!=', $id)->first();
-
-        if ($user) {
-            return response()->json([
-                'message' => 'Username sudah digunakan'
-            ]);
-        }
-
-        return response()->json([
-            'message' => 'Username belum digunakan'
-        ]);
-    }
     
-    //update user
+
     //update user
     public function updateUser(Request $request, $id)
     {
@@ -194,6 +133,83 @@ class userController extends Controller
             'message' => 'User deleted.'
         ]);
     }
+    //Pengecekan
 
-    
+    //cek NIK apakah ada yang sama
+    public function cekNik($nik)
+    {
+        $user = User::where('nik', $nik)->first();
+
+        if ($user) {
+            return response()->json([
+                'message' => 'NIK sudah digunakan'
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'NIK belum digunakan'
+        ]);
+    }
+
+    //cek username apakah ada yang sama
+    public function cekUsername($username)
+    {
+        $user = User::where('username', $username)->first();
+
+        if ($user) {
+            return response()->json([
+                'message' => 'Username sudah digunakan'
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Username belum digunakan'
+        ]);
+    }
+
+    //cek email apakah ada yang sama
+    public function cekEmail($email)
+    {
+        $user = User::where('email', $email)->first();
+
+        if ($user) {
+            return response()->json([
+                'message' => 'Email sudah digunakan'
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Email belum digunakan'
+        ]);
+    }
+
+    public function cekEmailEdit($email, $id)
+    {
+        $user = User::where('email', $email)->where('id', '!=', $id)->first();
+
+        if ($user) {
+            return response()->json([
+                'message' => 'Email sudah digunakan'
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Email belum digunakan'
+        ]);
+    }
+
+    public function cekUsernameEdit($username, $id)
+    {
+        $user = User::where('username', $username)->where('id', '!=', $id)->first();
+
+        if ($user) {
+            return response()->json([
+                'message' => 'Username sudah digunakan'
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Username belum digunakan'
+        ]);
+    }
 }

@@ -2,14 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\kaderController;
 use App\Http\Controllers\anakController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\penimbanganController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\imunisasiController;
-
-
+use App\Http\Controllers\RiwayatPenyakitController;
 
 Route::post('/register', [AuthController::class, 'userRegister']);
 Route::post('/login', [AuthController::class, 'userLogin']);
@@ -19,7 +17,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware('auth:sanctum')->get('/getAllUser', [userController::class, 'getAllUser']);
 
-Route::get('/show', [kaderController::class, 'showKader']);
 Route::post('/createAnak', [anakController::class, 'createAnak']);
 Route::get('/getAnak', [anakController::class, 'getAnak']);
 Route::put('/updateAnak/{nik}', [anakController::class, 'updateAnak']);
@@ -46,6 +43,17 @@ Route::get('/getImunisasiById/{id}', [imunisasiController::class, 'getImunisasiB
 Route::put('/updateImunisasi/{id}', [imunisasiController::class, 'updateImunisasi']);
 Route::delete('/deleteImunisasi/{id}', [imunisasiController::class, 'deleteImunisasi']);
 
+//Riwayat Penyakit
+Route::get('/getMedical', [RiwayatPenyakitController::class, 'getRiwayatPenyakit']);
+Route::post('/createMedical', [RiwayatPenyakitController::class, 'createRiwayatPenyakit']);
+Route::get('/getMedicalByNik/{nik_anak}', [RiwayatPenyakitController::class, 'getRiwayatPenyakitByNik']);
+Route::get('/getMedicalById/{id}', [RiwayatPenyakitController::class, 'getRiwayatPenyakitById']);
+Route::put('/updateMedical/{id}', [RiwayatPenyakitController::class, 'updateRiwayatPenyakit']);
+Route::delete('/deleteMedical/{id}', [RiwayatPenyakitController::class, 'deleteRiwayatPenyakit']);
+
+
+
+
 //get all user
 Route::get('/getAllUser', [userController::class, 'getAllUser']);
 
@@ -61,6 +69,7 @@ Route::put('/updateUser/{id}', [userController::class, 'updateUser']);
 
 Route::get('/cekUsername/{username}', [userController::class, 'cekUsername']);
 Route::get('/cekEmail/{email}', [userController::class, 'cekEmail']);
+Route::get('/cekNik/{nik}', [userController::class, 'cekNik']);
 //cek username edit
 Route::get('/cekUsernameEdit/{username}/{id}', [userController::class, 'cekUsernameEdit']);
 //cek email edit

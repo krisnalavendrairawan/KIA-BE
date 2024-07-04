@@ -31,6 +31,8 @@ class anakController extends Controller
         $anak->bb_lahir = $request->bb_lahir;
         $anak->pb_lahir = $request->pb_lahir;
         $anak->no_hp_ortu = $request->no_hp_ortu;
+        $anak->rt = $request->rt;
+        $anak->rw = $request->rw;
         $anak->alamat = $request->alamat;
         $anak->umur = $request->umur;
         $anak->save();
@@ -65,6 +67,8 @@ class anakController extends Controller
     $anak->bb_lahir = $request->bb_lahir ?? $anak->bb_lahir;
     $anak->pb_lahir = $request->pb_lahir ?? $anak->pb_lahir;
     $anak->no_hp_ortu = $request->no_hp_ortu ?? $anak->no_hp_ortu;
+    $anak->rt = $request->rt ?? $anak->rt;
+    $anak->rw = $request->rw ?? $anak->rw;
     $anak->alamat = $request->alamat ?? $anak->alamat;
     $anak->umur = $request->umur ?? $anak->umur;
 
