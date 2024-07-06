@@ -27,9 +27,22 @@ class imunisasiController extends Controller
             'imunisasi' => $imunisasi
         ]);
     }
+    //cari data imunisasi berdsarkan bulan dan tahun
+    public function getImunisasiByBulan($tahun, $bulan)
+    {
+        $imunisasi = Imunisasi::whereYear('tgl_imunisasi', $tahun)
+            ->whereMonth('tgl_imunisasi', $bulan)
+            ->get();
+        $imunisasi->load('anak');
+        $imunisasi->load('user');
+        return response()->json([
+            'imunisasi' => $imunisasi
+        ]);
+    }
+
 
     //create imunisasi
-    public function createImunisasi (Request $request)
+    public function createImunisasi(Request $request)
     {
         $imunisasi = new Imunisasi;
         $imunisasi->nik_anak = $request->nik_anak;

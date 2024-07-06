@@ -23,24 +23,24 @@ class penimbanganController extends Controller
         try {
             // Lakukan pencarian berdasarkan nik_anak
             $penimbangan = Penimbangan::where('nik_anak', $nik_anak)->get();
-            
+
             // Pastikan data ditemukan sebelum merespons
             if ($penimbangan->isEmpty()) {
                 return response()->json(['message' => 'Data penimbangan tidak ditemukan untuk nik_anak yang diberikan'], 404);
             }
-    
+
             // Muat data anak terkait
             $penimbangan->load('anak');
-    
+
             return response()->json(['penimbangan' => $penimbangan]);
         } catch (\Exception $e) {
             // Tangani kesalahan jika ada
             return response()->json(['message' => $e->getMessage()], 500);
         }
     }
-    
 
-    public function createPenimbangan (Request $request)
+
+    public function createPenimbangan(Request $request)
     {
         $penimbangan = new Penimbangan;
         $penimbangan->nik_anak = $request->nik_anak;
@@ -65,6 +65,19 @@ class penimbanganController extends Controller
     public function getPenimbanganById($id)
     {
         $penimbangan = Penimbangan::find($id);
+        $penimbangan->load('anak');
+        $penimbangan->load('user');
+        return response()->json([
+            'penimbangan' => $penimbangan
+        ]);
+    }
+
+    //cari data berdasarkan bulan tanggal penimbangan
+    public function getPenimbanganByBulan($tahun, $bulan)
+    {
+        $penimbangan = Penimbangan::whereYear('tgl_penimbangan', $tahun)
+            ->whereMonth('tgl_penimbangan', $bulan)
+            ->get();
         $penimbangan->load('anak');
         $penimbangan->load('user');
         return response()->json([
@@ -111,4 +124,3 @@ class penimbanganController extends Controller
         ]);
     }
 }
-

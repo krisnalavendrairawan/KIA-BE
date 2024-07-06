@@ -34,7 +34,7 @@ Route::get('/getPenimbanganById/{id}', [penimbanganController::class, 'getPenimb
 Route::get('/getPenimbanganByNik/{nik_anak}', [penimbanganController::class, 'getPenimbanganByNik']);
 Route::put('/updatePenimbangan/{id}', [penimbanganController::class, 'updatePenimbangan']);
 Route::delete('/deletePenimbangan/{id}', [penimbanganController::class, 'deletePenimbangan']);
-
+Route::get('/getPenimbanganByBulan/{tahun}/{bulan}', [penimbanganController::class, 'getPenimbanganByBulan']);
 
 //imunisasi
 Route::get('/getImunisasi', [imunisasiController::class, 'getImunisasi']);
@@ -42,6 +42,7 @@ Route::post('/createImunisasi', [imunisasiController::class, 'createImunisasi'])
 Route::get('/getImunisasiById/{id}', [imunisasiController::class, 'getImunisasiById']);
 Route::put('/updateImunisasi/{id}', [imunisasiController::class, 'updateImunisasi']);
 Route::delete('/deleteImunisasi/{id}', [imunisasiController::class, 'deleteImunisasi']);
+Route::get('/getImunisasiByBulan/{tahun}/{bulan}', [imunisasiController::class, 'getImunisasiByBulan']);
 
 //Riwayat Penyakit
 Route::get('/getMedical', [RiwayatPenyakitController::class, 'getRiwayatPenyakit']);
