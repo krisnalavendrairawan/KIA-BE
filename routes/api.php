@@ -8,6 +8,7 @@ use App\Http\Controllers\penimbanganController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\imunisasiController;
 use App\Http\Controllers\RiwayatPenyakitController;
+use App\Http\Controllers\JadwalController;  
 
 Route::post('/register', [AuthController::class, 'userRegister']);
 Route::post('/login', [AuthController::class, 'userLogin']);
@@ -52,6 +53,8 @@ Route::get('/getMedicalById/{id}', [RiwayatPenyakitController::class, 'getRiwaya
 Route::put('/updateMedical/{id}', [RiwayatPenyakitController::class, 'updateRiwayatPenyakit']);
 Route::delete('/deleteMedical/{id}', [RiwayatPenyakitController::class, 'deleteRiwayatPenyakit']);
 
+//jadwal
+Route::get('/getJadwal', [JadwalController::class, 'getJadwal']);
 
 
 
