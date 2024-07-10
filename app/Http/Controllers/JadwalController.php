@@ -16,11 +16,21 @@ class JadwalController extends Controller
         ]);
     }
 
+    //get jadwal by id
+    public function getJadwalById($id)
+    {
+        $jadwal = Jadwal::find($id);
+        return response()->json([
+            'jadwal' => $jadwal
+        ]);
+    }
+
     //create jadwal
-    public function createJadwal (Request $request)
+    public function createJadwal(Request $request)
     {
         $jadwal = new Jadwal;
         $jadwal->tgl_kegiatan = $request->tgl_kegiatan;
+        $jadwal->rw = $request->rw;
         $jadwal->tempat = $request->tempat;
         $jadwal->keterangan = $request->keterangan;
 
@@ -32,10 +42,11 @@ class JadwalController extends Controller
     }
 
     //update jadwal
-    public function updateJadwal (Request $request, $id)
+    public function updateJadwal(Request $request, $id)
     {
         $jadwal = Jadwal::find($id);
         $jadwal->tgl_kegiatan = $request->tgl_kegiatan;
+        $jadwal->rw = $request->rw;
         $jadwal->tempat = $request->tempat;
         $jadwal->keterangan = $request->keterangan;
 

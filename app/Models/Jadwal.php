@@ -10,5 +10,5 @@ class Jadwal extends Model
     use HasFactory;
     protected $table = 'jadwal';
     protected $primaryKey = 'id_jadwal';
-    protected $fillable = ['tgl_kegiatan', 'tempat', 'keterangan'];
+    protected $fillable = ['tgl_kegiatan', 'rw', 'tempat', 'keterangan'];
 }

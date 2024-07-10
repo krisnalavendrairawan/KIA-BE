@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +12,8 @@ use Illuminate\Http\Request;
 class AuthController extends Controller
 {
     // use Auth;
-    public function userRegister(Request $request){
+    public function userRegister(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             // 'id' => 'required',
             'nik' => 'required|string',
@@ -27,14 +29,13 @@ class AuthController extends Controller
             'rw' => 'required|string',
             'role' => 'required|string'
         ]);
-        
-        if($validator->fails()){
+
+        if ($validator->fails()) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Ada Kesalahan',
                 'errors' => $validator->errors()
             ]);
-            
         }
 
         $input = $request->all();
@@ -48,9 +49,10 @@ class AuthController extends Controller
         ]);
     }
 
-    public function userLogin(Request $request){
+    public function userLogin(Request $request)
+    {
         $credentials = $request->only('username', 'password');
-    
+
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             // Check user's role
@@ -63,6 +65,7 @@ class AuthController extends Controller
                     'role' => $user->role,
                     'nama' => $user->nama,
                     'id_user' => $user->id,
+                    'username' => $user->username,
                 ]);
             } else {
                 return response()->json([
@@ -77,6 +80,4 @@ class AuthController extends Controller
             ], 401);
         }
     }
-    
-
 }

@@ -8,7 +8,7 @@ use App\Http\Controllers\penimbanganController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\imunisasiController;
 use App\Http\Controllers\RiwayatPenyakitController;
-use App\Http\Controllers\JadwalController;  
+use App\Http\Controllers\JadwalController;
 
 Route::post('/register', [AuthController::class, 'userRegister']);
 Route::post('/login', [AuthController::class, 'userLogin']);
@@ -55,6 +55,10 @@ Route::delete('/deleteMedical/{id}', [RiwayatPenyakitController::class, 'deleteR
 
 //jadwal
 Route::get('/getJadwal', [JadwalController::class, 'getJadwal']);
+Route::post('/createJadwal', [JadwalController::class, 'createJadwal']);
+Route::get('/getJadwalById/{id}', [JadwalController::class, 'getJadwalById']);
+Route::put('/updateJadwal/{id}', [JadwalController::class, 'updateJadwal']);
+Route::delete('/deleteJadwal/{id}', [JadwalController::class, 'deleteJadwal']);
 
 
 
@@ -63,6 +67,8 @@ Route::get('/getAllUser', [userController::class, 'getAllUser']);
 
 //get kader
 Route::get('/getKader', [userController::class, 'showKader']);
+//get bidan
+Route::get('/getBidan', [userController::class, 'showBidan']);
 
 //showKader by username
 Route::get('/getKader/{username}', [userController::class, 'showKaderByUsername']);
