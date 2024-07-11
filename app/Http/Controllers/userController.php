@@ -66,7 +66,7 @@ class userController extends Controller
         ]);
     }
 
-    
+
 
     //update user
     public function updateUser(Request $request, $id)
@@ -100,8 +100,12 @@ class userController extends Controller
         $user->nik = $request->nik;
         $user->role = $request->role;
         $user->username = $request->username;
-        $user->password = $request->password;
-        $user->confirm_password = $request->confirm_password;
+
+        if ($request->password) {
+            // Encrypt the password using bcrypt
+            $user->password = bcrypt($request->password);
+        }
+
         $user->email = $request->email;
         $user->alamat = $request->alamat;
         $user->jenis_kelamin = $request->jenis_kelamin;
