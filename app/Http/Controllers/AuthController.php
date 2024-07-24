@@ -56,7 +56,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             // Check user's role
-            if ($user->role === 'kader' || $user->role === 'bidan') {
+            if ($user->role === 'kader' || $user->role === 'bidan' || $user->role === 'admin') {
                 $token = $user->createToken('authToken')->plainTextToken;
                 return response()->json([
                     'status' => 'success',

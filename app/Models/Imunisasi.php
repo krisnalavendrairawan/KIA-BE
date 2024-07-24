@@ -11,7 +11,7 @@ class Imunisasi extends Model
 
     protected $table = 'imunisasi';
     protected $primaryKey = 'id_imunisasi';
-    protected $fillable = ['tgl_imunisasi', 'nik_anak', 'jenis_imunisasi', 'usia', 'id_kader'];
+    protected $fillable = ['tgl_imunisasi', 'nik_anak', 'jenis_imunisasi', 'usia', 'vitamin', 'mpasi', 'id_kader'];
 
     public function anak()
     {

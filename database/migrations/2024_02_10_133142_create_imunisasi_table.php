@@ -20,6 +20,8 @@ return new class extends Migration
             $table->foreign('nik_anak')->references('nik')->on('anak')->onDelete('cascade');
             $table->string('jenis_imunisasi');
             $table->integer('usia');
+            $table->string('vitamin')->nullable();
+            $table->string('mpasi')->nullable();
             $table->bigInteger('id_kader');
             $table->foreign('id_kader')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

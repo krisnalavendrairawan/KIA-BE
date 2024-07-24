@@ -50,6 +50,8 @@ class imunisasiController extends Controller
         $imunisasi->tgl_imunisasi = $request->tgl_imunisasi;
         $imunisasi->usia = $request->usia;
         $imunisasi->jenis_imunisasi = $request->jenis_imunisasi;
+        $imunisasi->vitamin = $request->vitamin;
+        $imunisasi->mpasi = $request->mpasi;
         $imunisasi->save();
 
         return response()->json([
@@ -67,6 +69,8 @@ class imunisasiController extends Controller
         $imunisasi->tgl_imunisasi = $request->tgl_imunisasi;
         $imunisasi->usia = $request->usia;
         $imunisasi->jenis_imunisasi = $request->jenis_imunisasi;
+        $imunisasi->vitamin = $request->vitamin;
+        $imunisasi->mpasi = $request->mpasi;
 
         $imunisasi->save();
 
